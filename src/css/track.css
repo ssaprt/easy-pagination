@@ -1,0 +1,38 @@
+.easy-pagination-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2px;
+    gap: 2px;
+}
+.easy-pagination-track--horizontal {
+    flex-direction: row;
+
+    min-width: 0;
+}
+.easy-pagination-track--vertical {
+    flex-direction: column;
+
+    min-height: 0;
+}
+.easy-pagination-track__ellipsis {
+    cursor: default;
+    color: var(--spread-color);
+    fill: var(--spread-color);
+
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--item-w);
+    height: var(--item-h);
+    min-width: 30px;
+    min-height: 30px;
+    padding: 2px;
+}
+
+.easy-pagination-track--vertical .easy-pagination-track__ellipsis {
+    transform: rotate(90deg);
+}

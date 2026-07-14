@@ -1,0 +1,48 @@
+.easy-pagination-item {
+    cursor: pointer;
+    color: var(--item-color);
+    fill: var(--item-fill);
+    stroke: var(--item-stroke);
+    background: var(--item-background);
+    transition: var(--item-transition);
+    border-radius: var(--item-border-radius);
+    width: var(--item-w);
+    height: var(--item-h);
+    padding: 2px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-variant-numeric: tabular-nums;
+    font-family: "Courier New", Courier, monospace;
+    min-width: 34px;
+    min-height: 34px;
+}
+@media (hover: hover) and (pointer: fine) {
+    .easy-pagination-item:hover,
+    .easy-pagination-item--hovered {
+        color: var(--hover-item-color);
+        fill: var(--hover-item-fill);
+        stroke: var(--hover-item-stroke);
+        background: var(--hover-item-background);
+        transition: var(--hover-item-transition);
+        border-radius: var(--hover-item-border-radius);
+    }
+}
+
+.easy-pagination-item:active {
+    color: var(--hover-item-color);
+    fill: var(--hover-item-fill);
+    stroke: var(--hover-item-stroke);
+    background: var(--hover-item-background);
+    transition: var(--hover-item-transition);
+    border-radius: var(--hover-item-border-radius);
+}
+
+.easy-pagination-item--active {
+    color: var(--active-item-color);
+    fill: var(--active-item-fill);
+    stroke: var(--active-item-stroke);
+    background: var(--active-item-background);
+    transition: var(--active-item-transition);
+    border-radius: var(--active-item-border-radius);
+}

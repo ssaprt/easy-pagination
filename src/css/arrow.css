@@ -1,0 +1,55 @@
+.easy-pagination-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 4px;
+    width: var(--arrow-w);
+    height: var(--arrow-h);
+    color: var(--arrow-color);
+    fill: var(--arrow-fill);
+    stroke: var(--arrow-stroke);
+    border-radius: var(--arrow-border-radius);
+    background: var(--arrow-background);
+    transition: var(--arrow-transition);
+    flex-shrink: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+    .easy-pagination-arrow:hover,
+    .easy-pagination-arrow--hovered {
+        color: var(--hover-arrow-color);
+        fill: var(--hover-arrow-fill);
+        stroke: var(--hover-arrow-stroke);
+        background: var(--hover-arrow-background);
+        transform: var(--hover-arrow-transform);
+        transition: var(--hover-arrow-transition);
+    }
+}
+
+.easy-pagination-arrow:active {
+    color: var(--active-arrow-color);
+    fill: var(--active-arrow-fill);
+    stroke: var(--active-arrow-stroke);
+    background: var(--active-arrow-background);
+    transform: var(--active-arrow-transform);
+    transition: var(--active-arrow-transition);
+}
+
+.easy-pagination-arrow--disabled {
+    pointer-events: none;
+}
+
+.easy-pagination-arrow--disabled,
+.easy-pagination-arrow--disabled > *:first-child {
+    color: var(--disabled-arrow-color);
+    fill: var(--disabled-arrow-fill);
+    stroke: var(--disabled-arrow-stroke);
+    background: var(--disabled-arrow-background);
+    opacity: 0.5;
+}
+
+.easy-pagination-arrow__icon {
+    width: 100%;
+    height: 100%;
+}
