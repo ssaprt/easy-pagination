@@ -2,6 +2,8 @@
 
 A flexible, animated React pagination library built with TypeScript and MobX. Handles list pagination with smooth slide animations, customizable themes, arbitrary child content, and optional synchronization with the URL or `localStorage` — so multiple independent paginators can coexist on the same page.
 
+Web version: <a href="https://easy-pagination.vercel.app/" target="_blank">Easy Pagination</a>
+
 ## Features
 
 - 🎬 **Smooth animated transitions** between pages (horizontal or vertical)
@@ -17,6 +19,8 @@ A flexible, animated React pagination library built with TypeScript and MobX. Ha
 npm install @ssaprt/easy-pagination
 # or
 yarn add @ssaprt/easy-pagination
+# or
+npmx install @ssaprt/easy-pagination
 ```
 
 ## Quick start
