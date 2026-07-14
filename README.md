@@ -44,7 +44,7 @@ export const YourComponent = () => {
     return (
         <div className="flex flex-wrap gap-2">
             {list.map((item, i) => (
-                <span key={i}>{item as React.ReactNode}</span>
+                <span key={i}>{item}</span>
             ))}
         </div>
     );
@@ -156,7 +156,7 @@ export const YourComponent = () => {
                 style={{ backdropFilter: `blur(${blur}px)` }}
             />
             {list.map((item, i) => (
-                <span key={i}>{item as React.ReactNode}</span>
+                <span key={i}>{item}</span>
             ))}
         </div>
     );
