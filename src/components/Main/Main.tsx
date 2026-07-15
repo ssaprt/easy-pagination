@@ -24,7 +24,7 @@ export const Main = observer(({ children }: { children: React.ReactNode }) => {
         observer.observe(navigationRef.current);
 
         return () => observer.disconnect();
-    }, [store, navigationRef.current]);
+    }, [store.allItems.length]);
 
     return (
         <div
