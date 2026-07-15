@@ -73,6 +73,7 @@ export const YourComponent = () => {
 | `indexing`       | `URLType`                    | —                 | Sync current page with the URL query string or `localStorage`. See [URL / storage indexing](#url--storage-indexing). |
 
 ```tsx
+import "@ssaprt/easy-pagination/style.css";
 import { Pagination } from "@ssaprt/easy-pagination";
 // import type { PresetsType } from "@ssaprt/easy-pagination";
 
@@ -169,6 +170,7 @@ export const YourComponent = () => {
 By default, `Pagination` keeps the current page only in internal state — nothing is written to the URL or `localStorage`. If you want the current page to survive a refresh, be shareable via link, or be bookmarkable, opt in with the `indexing` prop.
 
 ```tsx
+import "@ssaprt/easy-pagination/style.css";
 import { Pagination } from "@ssaprt/easy-pagination";
 
 export const App = () => {
@@ -258,6 +260,7 @@ export type PresetsType =
 | `squaredCyberpunkNeon` | Squared corners, cyberpunk neon      |
 
 ```tsx
+import "@ssaprt/easy-pagination/style.css";
 import { Pagination } from "@ssaprt/easy-pagination";
 
 <Pagination items={items} selectTheme="roundedAuroraNebula">
