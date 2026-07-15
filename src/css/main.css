@@ -15,6 +15,6 @@
 }
 
 .easy-pagination-main__content {
-    display: block;
     position: relative;
+    flex: 0 0 auto;
 }
