@@ -32,7 +32,7 @@ export const Main = observer(({ children }: { children: React.ReactNode }) => {
             style={style}
         >
             {["start", "full"].includes(navigation || "full") && <Navigation />}
-            {children}
+            <div className="easy-pagination-main__content">{children}</div>
             {["end", "full"].includes(navigation || "full") && <Navigation />}
         </div>
     );

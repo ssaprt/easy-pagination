@@ -13,3 +13,8 @@
 .easy-pagination-main--vertical {
     flex-direction: row;
 }
+
+.easy-pagination-main__content {
+    display: block;
+    position: relative;
+}
