@@ -26,6 +26,7 @@ npmx install @ssaprt/easy-pagination
 ## Quick start
 
 ```tsx
+import "@ssaprt/easy-pagination/style.css";
 import { Pagination } from "@ssaprt/easy-pagination";
 import { useList, useProgress } from "@ssaprt/easy-pagination";
 
