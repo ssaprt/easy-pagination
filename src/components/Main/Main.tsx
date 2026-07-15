@@ -31,9 +31,11 @@ export const Main = observer(({ children }: { children: React.ReactNode }) => {
             className={`easy-pagination-main easy-pagination-main--${mode || "horizontal"} ${className || ""}`.trim()}
             style={style}
         >
-            {["start", "full"].includes(navigation || "full") && <Navigation />}
+            {["start", "full"].includes(navigation || "full") &&
+                store.allItems.length > store.itemsPerPage && <Navigation />}
             <div className="easy-pagination-main__content">{children}</div>
-            {["end", "full"].includes(navigation || "full") && <Navigation />}
+            {["end", "full"].includes(navigation || "full") &&
+                store.allItems.length > store.itemsPerPage && <Navigation />}
         </div>
     );
 });
