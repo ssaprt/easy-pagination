@@ -2,7 +2,7 @@
 
 A flexible, animated React pagination library built with TypeScript and MobX. Handles list pagination with smooth slide animations, customizable themes, arbitrary child content, and optional synchronization with the URL or `localStorage` — so multiple independent paginators can coexist on the same page.
 
-Web version: <a href="https://easy-pagination.vercel.app/" target="_blank">Easy Pagination</a>
+Web version: <a href="https://easy-pagination.vercel.app/">Easy Pagination</a>
 
 ## Features
 

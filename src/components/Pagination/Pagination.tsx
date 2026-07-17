@@ -1,3 +1,4 @@
+//* IMPORTS ================================================================*
 import { observer } from "mobx-react-lite";
 import { useInit } from "src/hooks/useInit";
 import { usePaginationActions } from "src/hooks/usePagination.actions";
@@ -9,9 +10,11 @@ import { useState } from "react";
 import { selectTheme } from "src/pressets/config";
 import { themeMerge } from "src/utils/themeMerge";
 import "../../css/index.css";
+//* IMPORTS ================================================================*
 
 export const Pagination = observer(
     <T,>({ children, ...props }: PaginationType<T>) => {
+        //* STORES =========================================================*
         const store = useInit({
             items: props.items,
             itemsPerPage: props.itemsPerPage,
@@ -19,15 +22,18 @@ export const Pagination = observer(
             animationSpeed: props.animationSpeed,
             indexing: props.indexing,
         });
+        //* STORES =========================================================*
 
+        //* STATES =========================================================*
         const [currentHoveredItem, setCurrentHoveredItem] = useState<
             number | null
         >(null);
         const [currentHoveredArrow, setCurrentHoveredArrow] = useState<
             "prev" | "next" | null
         >(null);
+        //* STATES =========================================================*
 
-        // PARTS ========================================*
+        //* PARTS ==========================================================*
         const actions = usePaginationActions(store);
         const theme = props.selectTheme;
         const propsPart = props as unknown as Omit<
@@ -48,8 +54,9 @@ export const Pagination = observer(
             items: props.items,
             theme: finalTheme,
         } as PaginationType<T>;
-        // PARTS ========================================*
+        //* PARTS ==========================================================*
 
+        //* JSX ============================================================*
         return (
             <PaginationContext.Provider
                 value={{
@@ -65,5 +72,6 @@ export const Pagination = observer(
                 <Main>{children}</Main>
             </PaginationContext.Provider>
         );
+        //* JSX ============================================================*
     },
 );

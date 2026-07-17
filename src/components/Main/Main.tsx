@@ -4,10 +4,9 @@ import { usePaginationContext } from "src/hooks/usePaginationContext";
 import { Navigation } from "../Navigation/Navigation";
 
 export const Main = observer(({ children }: { children: React.ReactNode }) => {
-    const { props, store } = usePaginationContext();
+    const { props, store, actions } = usePaginationContext();
     const { mode, navigation, theme } = props;
     const { style, className } = theme?.main || {};
-    const { actions } = usePaginationContext();
     const { navigationRef } = actions;
 
     useLayoutEffect(() => {

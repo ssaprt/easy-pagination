@@ -29,7 +29,12 @@
     },
     "keywords": [
         "pagination",
-        "navigation"
+        "navigation",
+        "react",
+        "pager",
+        "react-pagination",
+        "next-pagination",
+        "next"
     ],
     "author": "",
     "license": "ISC",
