@@ -1,20 +1,45 @@
-export const getUrlParameter = (name: string): string | null => {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-    const results = regex.exec(window.location.search);
-    return results === null
-        ? null
-        : decodeURIComponent(results[1].replace(/\+/g, " "));
+const getRelativeUrl = (url: URL): string => {
+    return `${url.pathname}${url.search}${url.hash}`;
 };
 
-export const setUrlParameter = (name: string, value: string) => {
+export const getUrlParameter = (key: string): string | null => {
+    if (typeof window === "undefined") {
+        return null;
+    }
+
     const url = new URL(window.location.href);
-    url.searchParams.set(name, value);
-    window.history.replaceState({}, "", url);
+
+    return url.searchParams.get(key);
 };
 
-export const removeUrlParameter = (name: string) => {
+export const setUrlParameter = (key: string, value: string): void => {
+    if (typeof window === "undefined") {
+        return;
+    }
+
     const url = new URL(window.location.href);
-    url.searchParams.delete(name);
-    window.history.replaceState({}, "", url);
+
+    if (url.searchParams.get(key) === value) {
+        return;
+    }
+
+    url.searchParams.set(key, value);
+
+    window.history.replaceState(window.history.state, "", getRelativeUrl(url));
+};
+
+export const removeUrlParameter = (key: string): void => {
+    if (typeof window === "undefined") {
+        return;
+    }
+
+    const url = new URL(window.location.href);
+
+    if (!url.searchParams.has(key)) {
+        return;
+    }
+
+    url.searchParams.delete(key);
+
+    window.history.replaceState(window.history.state, "", getRelativeUrl(url));
 };

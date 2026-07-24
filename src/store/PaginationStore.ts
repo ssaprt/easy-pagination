@@ -1,15 +1,7 @@
 import { makeAutoObservable, reaction, runInAction } from "mobx";
-import {
-    getUrlParameter,
-    removeUrlParameter,
-    setUrlParameter,
-} from "../utils/indexing-url";
+import { getUrlParameter, setUrlParameter } from "../utils/indexing-url";
 
-import {
-    getStoragePage,
-    removeStoragePage,
-    setStoragePage,
-} from "../utils/indexing-storage";
+import { getStoragePage, setStoragePage } from "../utils/indexing-storage";
 
 export type PaginationMode = "horizontal" | "vertical";
 export type PaginationDirection =
@@ -414,14 +406,6 @@ export class PaginationStorage {
         if (this.animationFrame) {
             cancelAnimationFrame(this.animationFrame);
             this.animationFrame = null;
-        }
-
-        if (this.modePageIndexing && this.keyPageIndexing) {
-            if (this.modePageIndexing === "url") {
-                removeUrlParameter(this.keyPageIndexing);
-            } else {
-                removeStoragePage(this.keyPageIndexing);
-            }
         }
 
         runInAction(() => {
