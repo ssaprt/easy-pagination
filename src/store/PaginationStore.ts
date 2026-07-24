@@ -5,11 +5,7 @@ import {
     setUrlParameter,
 } from "../utils/indexing-url";
 
-import {
-    getStoragePage,
-    removeStoragePage,
-    setStoragePage,
-} from "../utils/indexing-storage";
+import { removeStoragePage, setStoragePage } from "../utils/indexing-storage";
 
 export type PaginationMode = "horizontal" | "vertical";
 export type PaginationDirection =
@@ -116,35 +112,21 @@ export class PaginationStorage {
     }
 
     configurePageIndexing = (
-        mode: PageIndexingMode,
+        mode: "url" | "storage" | null,
         key: string | null,
     ): void => {
-        runInAction(() => {
-            this.modePageIndexing = mode;
-            this.keyPageIndexing = key;
-        });
+        this.modePageIndexing = mode;
+        this.keyPageIndexing = key;
 
-        if (!mode || !key) {
-            this._isConfigured = true;
+        if (mode !== "url" || !key) {
             return;
         }
 
-        if (typeof window === "undefined") {
-            return;
+        const pageFromUrl = getUrlParameter(key);
+
+        if (pageFromUrl) {
+            this.currentPage = pageFromUrl;
         }
-
-        const external =
-            mode === "url" ? getUrlParameter(key) : getStoragePage(key);
-
-        runInAction(() => {
-            if (external !== null && external !== "") {
-                this.currentPage = external;
-            } else {
-                this.currentPage = "1";
-                this._persistPage("1");
-            }
-            this._isConfigured = true;
-        });
     };
 
     private _persistPage = (page: string): void => {
