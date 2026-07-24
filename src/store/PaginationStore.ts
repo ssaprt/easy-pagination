@@ -1,11 +1,7 @@
 import { makeAutoObservable, reaction, runInAction } from "mobx";
-import {
-    getUrlParameter,
-    removeUrlParameter,
-    setUrlParameter,
-} from "../utils/indexing-url";
+import { getUrlParameter, setUrlParameter } from "../utils/indexing-url";
 
-import { removeStoragePage, setStoragePage } from "../utils/indexing-storage";
+import { setStoragePage } from "../utils/indexing-storage";
 
 export type PaginationMode = "horizontal" | "vertical";
 export type PaginationDirection =
@@ -112,21 +108,28 @@ export class PaginationStorage {
     }
 
     configurePageIndexing = (
-        mode: "url" | "storage" | null,
+        mode: PageIndexingMode,
         key: string | null,
     ): void => {
-        this.modePageIndexing = mode;
-        this.keyPageIndexing = key;
+        runInAction(() => {
+            this._isConfigured = false;
+            this.modePageIndexing = mode;
+            this.keyPageIndexing = key;
+        });
 
-        if (mode !== "url" || !key) {
-            return;
+        if (mode === "url" && key) {
+            const pageFromUrl = getUrlParameter(key);
+
+            runInAction(() => {
+                if (pageFromUrl) {
+                    this.currentPage = pageFromUrl;
+                }
+            });
         }
 
-        const pageFromUrl = getUrlParameter(key);
-
-        if (pageFromUrl) {
-            this.currentPage = pageFromUrl;
-        }
+        runInAction(() => {
+            this._isConfigured = true;
+        });
     };
 
     private _persistPage = (page: string): void => {
@@ -398,15 +401,9 @@ export class PaginationStorage {
             this.animationFrame = null;
         }
 
-        if (this.modePageIndexing && this.keyPageIndexing) {
-            if (this.modePageIndexing === "url") {
-                removeUrlParameter(this.keyPageIndexing);
-            } else {
-                removeStoragePage(this.keyPageIndexing);
-            }
-        }
-
         runInAction(() => {
+            this._isConfigured = false;
+
             this.positionTrack = {};
             this.sizeTrack = {};
             this.currentPage = "1";
@@ -416,6 +413,9 @@ export class PaginationStorage {
             this.isReordering = false;
             this._previousTotalPages = 0;
             this.progress = 0;
+
+            this.modePageIndexing = null;
+            this.keyPageIndexing = null;
         });
     };
 }
